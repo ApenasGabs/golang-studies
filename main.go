@@ -24,4 +24,5 @@ func main() {
 	println(car.Model, car.Color)
 	car.Model = "Ford"
 	println(car.Model, car.Color)
+	car.Start()
 }
