@@ -13,11 +13,17 @@ func (o *Order) CalculateFinalPrice() {
 	o.FinalPrice = o.Price + o.Tax
 }
 func NewOrder(id string, price, tax float64) *Order {
-	return &Order{
+	order := &Order{
 		ID:    id,
 		Price: price,
 		Tax:   tax,
 	}
+	err := order.Validate()
+	if err != nil {
+		return nil
+	}
+	order.CalculateFinalPrice()
+	return order
 }
 
 func (o *Order) Validate() error {
