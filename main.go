@@ -1,6 +1,6 @@
 package main
 
-type car struct {
+type Car struct {
 	Model string
 	Color string
 }
@@ -8,14 +8,16 @@ type car struct {
 // para declarar, podemos fazer assim:
 // xyz :  car
 
-
+func (c Car) Start() {
+	println("Starting the car", c.Model)
+}
 
 func soma(a, b int) int {
 	return a + b
 }
 
 func main() {
-	car := car{ // declarando e definindo os valores
+	car := Car{ // declarando e definindo os valores
 		Model: "Fiat",
 		Color: "blue",
 	}
