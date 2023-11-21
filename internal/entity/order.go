@@ -12,7 +12,7 @@ type Order struct {
 func (o *Order) CalculateFinalPrice() {
 	o.FinalPrice = o.Price + o.Tax
 }
-func NewOrder(id string, price, tax float64) *Order {
+func NewOrder(id string, price, tax float64) (*Order, error) {
 	order := &Order{
 		ID:    id,
 		Price: price,
@@ -20,10 +20,10 @@ func NewOrder(id string, price, tax float64) *Order {
 	}
 	err := order.Validate()
 	if err != nil {
-		return nil
+		return nil, err
 	}
 	order.CalculateFinalPrice()
-	return order
+	return order, nil
 }
 
 func (o *Order) Validate() error {
