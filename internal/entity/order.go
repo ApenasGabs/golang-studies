@@ -10,3 +10,10 @@ type Order struct {
 func (o *Order) CalculateFinalPrice() {
 	o.FinalPrice = o.Price + o.Tax
 }
+func NewOrder(id string, price, tax float64) *Order {
+	return &Order{
+		ID:    id,
+		Price: price,
+		Tax:   tax,
+	}
+}
